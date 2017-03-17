@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1014961845279",
+    "firebase_url": "https://smwhr-9ba85.firebaseio.com",
+    "project_id": "smwhr-9ba85",
+    "storage_bucket": "smwhr-9ba85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014961845279:android:50d877fbc534ca09",
+        "android_client_info": {
+          "package_name": "com.smwhr.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014961845279-gp9dnkfvkt74hvahn4lr2da0b1lpnnqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuQuTvg0NeJUhWghWfhWuLLsATeRmWtHk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
