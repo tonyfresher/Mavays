@@ -1,22 +1,15 @@
-﻿using System.Linq;
-using System.IO;
-using System.Net.Http;
+﻿using System.Net.Http;
 using Android.App;
 using Android.Widget;
 using Android.OS;
 using Android.Content;
-using Android.Nfc;
-using Android.Util;
-using Android.Views;
 using Firebase.Xamarin.Auth;
-using Firebase.Xamarin.Database;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 
 namespace SMWHR
 {
-    [Activity(Label = "SMWHR", MainLauncher = true, Theme = "@style/AppTheme.Dark")]
+    [Activity(Label = "SMWHR", MainLauncher = true, Theme = "@style/AppTheme.Dark",
+        WindowSoftInputMode = Android.Views.SoftInput.StateHidden)]
     public class LoginActivity : Activity
     {
         private EditText _emailText;
@@ -26,6 +19,9 @@ namespace SMWHR
 
         protected override void OnCreate(Bundle bundle)
         {
+            if (TryReadUserId() != null)
+                Finish(); // TODO: Тут поменять на пререход в другое активити
+
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.LoginActivity);
 
@@ -35,9 +31,10 @@ namespace SMWHR
             _signupLink = FindViewById<TextView>(Resource.Id.link_signup);
 
             _loginButton.Click += (sender, e) => Login();
+            // _signupLink.Click += (sender, e) => { } TODO: Активити регистрации
         }
 
-        public async void Login()
+        private async void Login()
         {
             if (!Validate())
             {
@@ -55,19 +52,26 @@ namespace SMWHR
             var email = _emailText.Text;
             var password = _passwordText.Text;
 
-            var apiKey = "AIzaSyBuQuTvg0NeJUhWghWfhWuLLsATeRmWtHk";
-            using (var authProvider = new FirebaseAuthProvider(new FirebaseConfig(apiKey)))
+            
+            try
             {
-                try
+                var apiKey = GetString(Resource.String.ApiKey); // Он реально меняется
+                using (var authProvider = new FirebaseAuthProvider(new FirebaseConfig(apiKey)))
                 {
                     var auth = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
+                    SaveUserId(auth.FirebaseToken);
                     OnLoginSuccess();
                 }
-                catch (HttpRequestException)
-                {
-                    progressDialog.Cancel();
-                    OnLoginFailed();
-                }
+            }
+            catch (HttpRequestException)
+            {
+                progressDialog.Cancel();
+                OnLoginFailed(GetString(Resource.String.SignInError));
+            }
+            catch (Exception)
+            {
+                progressDialog.Cancel();
+                OnLoginFailed(GetString(Resource.String.Error));
             }
         }
 
@@ -76,19 +80,35 @@ namespace SMWHR
             MoveTaskToBack(true);
         }
 
-        public void OnLoginFailed()
+        private void OnLoginFailed(string message = null)
         {
-            Toast.MakeText(this, GetString(Resource.String.SignInError), ToastLength.Long).Show();
+            if (message != null)
+                Toast.MakeText(this, message, ToastLength.Long).Show();
+
             _loginButton.Enabled = true;
         }
 
-        public void OnLoginSuccess()
+        private void OnLoginSuccess()
         {
             _loginButton.Enabled = true;
-            Finish();
+            Finish(); // TODO: Тут поменять на пререход в другое активити
         }
 
-        public bool Validate()
+        private string TryReadUserId()
+        {
+            var sharedPref = GetPreferences(FileCreationMode.Private);
+            return sharedPref.GetString(GetString(Resource.String.UserIdPreference), null);
+        }
+
+        private void SaveUserId(string userId)
+        {
+            var sharedPref = GetPreferences(FileCreationMode.Private);
+            var editor = sharedPref.Edit();
+            editor.PutString(GetString(Resource.String.UserIdPreference), userId);
+            editor.Commit();
+        }
+
+        private bool Validate()
         {
             var valid = true;
 

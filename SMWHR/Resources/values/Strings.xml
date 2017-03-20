@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ApplicationName">SMWHR</string>
+  <string name="ApplicationName">SMWHR</string>
   <string name="Email">E-mail</string>
   <string name="Password">Пароль</string>
   <string name="SignIn">Вход</string>
@@ -9,4 +9,8 @@
   <string name="EmailError">Введите верный E-mail адрес</string>
   <string name="PasswordError">Пароль должен содержать больше 4 символов</string>
   <string name="SignInError">Неверный E-mail или пароль</string>
+  <string name="Error">Ошибка</string>
+
+  <string name="UserIdPreference">UserId</string>
+  <string name="ApiKey">AIzaSyBftw1LNdnIPxTl0ryySRJlyLmLpzqaXxY</string>
 </resources>

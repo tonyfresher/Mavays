@@ -76,10 +76,7 @@ namespace SMWHR
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int ic_launcher = 2130837504;
-			
-			// aapt resource value: 0x7f020001
-			public const int logo = 2130837505;
+			public const int logo = 2130837504;
 			
 			static Drawable()
 			{
@@ -154,6 +151,9 @@ namespace SMWHR
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f06000b
+			public const int ApiKey = 2131099659;
+			
 			// aapt resource value: 0x7f060000
 			public const int ApplicationName = 2131099648;
 			
@@ -162,6 +162,9 @@ namespace SMWHR
 			
 			// aapt resource value: 0x7f060006
 			public const int EmailError = 2131099654;
+			
+			// aapt resource value: 0x7f060009
+			public const int Error = 2131099657;
 			
 			// aapt resource value: 0x7f060002
 			public const int Password = 2131099650;
@@ -180,6 +183,9 @@ namespace SMWHR
 			
 			// aapt resource value: 0x7f060004
 			public const int SigningIn = 2131099652;
+			
+			// aapt resource value: 0x7f06000a
+			public const int UserIdPreference = 2131099658;
 			
 			static String()
 			{
