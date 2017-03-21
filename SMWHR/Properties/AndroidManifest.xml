@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.smwhr.android" android:versionCode="0" android:installLocation="auto" android:versionName="zero">
-  <uses-sdk android:minSdkVersion="21" />
-  <uses-permission android:name="android.permission.INTERNET" />
-  <application android:label="@string/ApplicationName" android:theme="@style/AppTheme" android:icon="@mipmap/ic_launcher">
+	<uses-sdk android:minSdkVersion="21" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:label="@string/ApplicationName" android:description="@string/Description" android:theme="@style/AppTheme" android:icon="@mipmap/ic_launcher" android:isGame="false">
+    <activity android:name="com.smwhr.android.MainActivity" />
     <activity android:name="com.smwhr.android.LoginActivity" />
-  </application>
+		<activity android:name="com.smwhr.android.MenuActivity" />
+	</application>
 </manifest>

@@ -5,11 +5,12 @@ using Android.OS;
 using Android.Content;
 using Firebase.Xamarin.Auth;
 using System;
+using Android.Content.PM;
 
 namespace SMWHR
 {
-    [Activity(Label = "SMWHR", MainLauncher = true, Theme = "@style/AppTheme.Dark",
-        WindowSoftInputMode = Android.Views.SoftInput.StateHidden)]
+    [Activity(Label = "SMWHR", Theme = "@style/AppTheme.Dark",
+        ScreenOrientation = ScreenOrientation.SensorPortrait, WindowSoftInputMode = Android.Views.SoftInput.StateHidden)]
     public class LoginActivity : Activity
     {
         private EditText _emailText;
@@ -19,9 +20,6 @@ namespace SMWHR
 
         protected override void OnCreate(Bundle bundle)
         {
-            if (TryReadUserId() != null)
-                Finish(); // TODO: Тут поменять на пререход в другое активити
-
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.LoginActivity);
 
@@ -91,18 +89,17 @@ namespace SMWHR
         private void OnLoginSuccess()
         {
             _loginButton.Enabled = true;
-            Finish(); // TODO: Тут поменять на пререход в другое активити
-        }
 
-        private string TryReadUserId()
-        {
-            var sharedPref = GetPreferences(FileCreationMode.Private);
-            return sharedPref.GetString(GetString(Resource.String.UserIdPreference), null);
+            var intent = new Intent(this, typeof(MenuActivity));
+            StartActivity(intent);
+
+            Finish();
         }
 
         private void SaveUserId(string userId)
         {
-            var sharedPref = GetPreferences(FileCreationMode.Private);
+            var sharedPref = GetSharedPreferences(
+                GetString(Resource.String.PreferencesFile), FileCreationMode.Private);
             var editor = sharedPref.Edit();
             editor.PutString(GetString(Resource.String.UserIdPreference), userId);
             editor.Commit();

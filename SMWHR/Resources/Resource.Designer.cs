@@ -122,6 +122,9 @@ namespace SMWHR
 			// aapt resource value: 0x7f040001
 			public const int LoginActivity = 2130968577;
 			
+			// aapt resource value: 0x7f040002
+			public const int Menu = 2130968578;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -151,41 +154,47 @@ namespace SMWHR
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f06000b
-			public const int ApiKey = 2131099659;
+			// aapt resource value: 0x7f06000d
+			public const int ApiKey = 2131099661;
 			
 			// aapt resource value: 0x7f060000
 			public const int ApplicationName = 2131099648;
 			
 			// aapt resource value: 0x7f060001
-			public const int Email = 2131099649;
-			
-			// aapt resource value: 0x7f060006
-			public const int EmailError = 2131099654;
-			
-			// aapt resource value: 0x7f060009
-			public const int Error = 2131099657;
+			public const int Description = 2131099649;
 			
 			// aapt resource value: 0x7f060002
-			public const int Password = 2131099650;
+			public const int Email = 2131099650;
 			
 			// aapt resource value: 0x7f060007
-			public const int PasswordError = 2131099655;
-			
-			// aapt resource value: 0x7f060003
-			public const int SignIn = 2131099651;
-			
-			// aapt resource value: 0x7f060008
-			public const int SignInError = 2131099656;
-			
-			// aapt resource value: 0x7f060005
-			public const int SignUpRequest = 2131099653;
-			
-			// aapt resource value: 0x7f060004
-			public const int SigningIn = 2131099652;
+			public const int EmailError = 2131099655;
 			
 			// aapt resource value: 0x7f06000a
-			public const int UserIdPreference = 2131099658;
+			public const int Error = 2131099658;
+			
+			// aapt resource value: 0x7f060003
+			public const int Password = 2131099651;
+			
+			// aapt resource value: 0x7f060008
+			public const int PasswordError = 2131099656;
+			
+			// aapt resource value: 0x7f06000b
+			public const int PreferencesFile = 2131099659;
+			
+			// aapt resource value: 0x7f060004
+			public const int SignIn = 2131099652;
+			
+			// aapt resource value: 0x7f060009
+			public const int SignInError = 2131099657;
+			
+			// aapt resource value: 0x7f060006
+			public const int SignUpRequest = 2131099654;
+			
+			// aapt resource value: 0x7f060005
+			public const int SigningIn = 2131099653;
+			
+			// aapt resource value: 0x7f06000c
+			public const int UserIdPreference = 2131099660;
 			
 			static String()
 			{
